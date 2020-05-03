@@ -67,6 +67,9 @@ public class MainActivity extends AppCompatActivity implements MainViewControlle
             if (buttonText.equals(cancel)) {
                 mUpdateHandler.cancel();
                 Log.d(TAG, "Update cancelled");
+                mUpdateProgress.setVisibility(View.INVISIBLE);
+                mUpdateProgressText.setVisibility(View.INVISIBLE);
+                mPauseResume.setVisibility(View.INVISIBLE);
                 mUpdateControl.setText(R.string.reboot_device);
             } else if (buttonText.equals(check)) {
                 mUpdate = Utilities.checkForUpdates(getApplicationContext());
