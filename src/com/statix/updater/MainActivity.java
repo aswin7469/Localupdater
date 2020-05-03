@@ -136,7 +136,7 @@ public class MainActivity extends AppCompatActivity implements MainViewControlle
                     mPauseResume.setVisibility(View.VISIBLE);
                     mPauseResume.setText(R.string.pause_update);
                     mUpdateControl.setText(R.string.cancel_update);
-                    mUpdateProgressText.setText("Installing..." + Integer.toString(state));
+                    mUpdateProgressText.setText("Installing... " + Integer.toString(updateProgress) + "%");
                     mUpdateProgress.setVisibility(View.VISIBLE);
                     mUpdateProgress.setProgress(updateProgress);
                     break;
@@ -146,6 +146,7 @@ public class MainActivity extends AppCompatActivity implements MainViewControlle
                 case Constants.UPDATE_SUCCEEDED:
                     mPauseResume.setVisibility(View.INVISIBLE);
                     mUpdateProgress.setVisibility(View.INVISIBLE);
+                    mUpdateProgressText.setText(R.string.update_complete);
                     mUpdateControl.setText(R.string.reboot_device);
                     break;
             }
