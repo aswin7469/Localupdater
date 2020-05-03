@@ -4,6 +4,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.os.PowerManager;
 import android.os.SystemProperties;
@@ -31,6 +32,7 @@ public class MainActivity extends AppCompatActivity implements MainViewControlle
     private TextView mUpdateSize;
     private TextView mVersionView;
 
+    private int mAccent;
     private final String TAG = "Updater";
 
     @Override
@@ -49,7 +51,8 @@ public class MainActivity extends AppCompatActivity implements MainViewControlle
         mUpdateProgressText = (TextView) findViewById(R.id.progressText);
         mUpdateSize = (TextView) findViewById(R.id.update_size);
         mVersionView = (TextView) findViewById(R.id.version_view);
-        mUpdateControl.setBackgroundColor(Utilities.getSystemAccent(this));
+        mAccent = Utilities.getSystemAccent(this);
+        mUpdateControl.setBackgroundColor(mAccent);
         mCurrentVersionView.setText("Current version: " + SystemProperties.get(Constants.STATIX_VERSION_PROP));
         mVersionView.setText(SystemProperties.get(Constants.STATIX_VERSION_PROP).split("-")[0]);
 
@@ -77,7 +80,6 @@ public class MainActivity extends AppCompatActivity implements MainViewControlle
         });
 
         setUpView();
-
     }
 
     private void setUpView() {
@@ -162,10 +164,10 @@ public class MainActivity extends AppCompatActivity implements MainViewControlle
     }
 
     private void showRebootDialog() {
-        new AlertDialog.Builder(getApplicationContext())
+        new AlertDialog.Builder(this)
                 .setTitle(R.string.restart_title)
+                .setMessage(R.string.reboot_message)
                 .setPositiveButton(R.string.ok, (dialog, id) -> rebootDevice())
-                .setNegativeButton(R.string.cancel, null)
-                .show();
+                .setNegativeButton(R.string.cancel, null).show();
     }
 }
