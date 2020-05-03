@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.os.Bundle;
 import android.os.PowerManager;
+import android.os.SystemProperties;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -24,9 +25,11 @@ public class MainActivity extends AppCompatActivity implements MainViewControlle
     private Button mPauseResume;
     private MainViewController mController;
     private ProgressBar mUpdateProgress;
+    private TextView mCurrentVersionView;
     private TextView mUpdateProgressText;
     private TextView mUpdateView;
     private TextView mUpdateSize;
+    private TextView mVersionView;
 
     private final String TAG = "Updater";
 
@@ -42,9 +45,13 @@ public class MainActivity extends AppCompatActivity implements MainViewControlle
         mUpdateView = (TextView) findViewById(R.id.update_view);
         mUpdateControl = (Button) findViewById(R.id.update_control);
         mPauseResume = (Button) findViewById(R.id.pause_resume);
+        mCurrentVersionView = (TextView) findViewById(R.id.current_version_view);
         mUpdateProgressText = (TextView) findViewById(R.id.progressText);
         mUpdateSize = (TextView) findViewById(R.id.update_size);
+        mVersionView = (TextView) findViewById(R.id.version_view);
         mUpdateControl.setBackgroundColor(Utilities.getSystemAccent(this));
+        mCurrentVersionView.setText("Current version: " + SystemProperties.get(Constants.STATIX_VERSION_PROP));
+        mVersionView.setText(SystemProperties.get(Constants.STATIX_VERSION_PROP).split("-")[0]);
 
         // check for updoots in /sdcard/statix_updates
         mUpdate = Utilities.checkForUpdates(getApplicationContext());
@@ -83,6 +90,8 @@ public class MainActivity extends AppCompatActivity implements MainViewControlle
             String updateSizeMB = "Update size: " + mUpdate.update().length()/(1024*1024) + "M";
             mUpdateSize.setText(updateSizeMB);
             mUpdateControl.setText(R.string.apply_update);
+            mUpdateProgress.getIndeterminateDrawable().setColorFilter(Utilities.getSystemAccent(this),
+                android.graphics.PorterDuff.Mode.SRC_IN);
             // pause/resume
             mPauseResume.setBackgroundColor(Utilities.getSystemAccent(this));
             mPauseResume.setVisibility(View.INVISIBLE);
