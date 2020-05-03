@@ -1,23 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     tools:context=".MainActivity">
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        app:srcCompat="@android:drawable/stat_sys_download" />
-
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/imageView"
         android:layout_centerHorizontal="true"
         android:text="@string/welcome"
         android:textAlignment="center"
@@ -46,14 +37,13 @@
         <TextView
             android:id="@+id/progressText"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:textSize="14sp" />
 
         <ProgressBar
             android:id="@+id/progress_bar"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="-108dp"
-            android:layout_marginTop="47dp" />
+            android:layout_height="wrap_content" />
 
     </LinearLayout>
 
@@ -62,20 +52,27 @@
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:orientation="vertical" >
+        android:orientation="vertical">
 
         <Button
             android:id="@+id/pause_resume"
-            android:layout_width="156dp"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="5dp" />
+            android:layout_marginEnd="15dp"
+            android:background="@drawable/sample_button" />
+
+        <View
+            android:layout_width="150dp"
+            android:layout_height="10dp"
+            android:layout_weight="1" />
 
         <Button
             android:id="@+id/update_control"
-            android:layout_width="156dp"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="5dp"
-            android:layout_marginBottom="100dp" />
+            android:layout_marginEnd="15dp"
+            android:layout_marginBottom="100dp"
+            android:background="@drawable/sample_button" />
 
     </LinearLayout>
 

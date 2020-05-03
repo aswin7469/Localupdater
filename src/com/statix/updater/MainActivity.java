@@ -78,8 +78,9 @@ public class MainActivity extends AppCompatActivity implements MainViewControlle
             mUpdateHandler = ABUpdateHandler.getInstance(mUpdate.update(), getApplicationContext(), mController);
             mController.addUpdateStatusListener(this);
             // apply updoot button
-            mUpdateView.setText(mUpdate.update().getName());
-            String updateSizeMB = mUpdate.update().length()/(1024*1024) + "M";
+            String updateText = "Update zip to install: " + mUpdate.update().getName();
+            mUpdateView.setText(updateText);
+            String updateSizeMB = "Update size: " + mUpdate.update().length()/(1024*1024) + "M";
             mUpdateSize.setText(updateSizeMB);
             mUpdateControl.setText(R.string.apply_update);
             // pause/resume
@@ -98,8 +99,6 @@ public class MainActivity extends AppCompatActivity implements MainViewControlle
                     mUpdateHandler.resume();
                 }
             });
-            mUpdateProgress.setVisibility(View.VISIBLE);
-            mUpdateProgress.setIndeterminate(true);
         } else {
             mUpdateView.setText(R.string.no_update_available);
             mUpdateControl.setText(R.string.check_for_update);
