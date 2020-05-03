@@ -92,6 +92,9 @@ class ABUpdateHandler {
         @Override
         public void onStatusUpdate(int status, float percent) {
             switch (status) {
+                case UpdateEngine.UpdateStatusConstants.REPORTING_ERROR_EVENT:
+                    mUpdate.setState(Constants.UPDATE_FAILED);
+                    mController.notifyUpdateStatusChanged(mUpdate, Constants.UPDATE_FAILED);
                 case UpdateEngine.UpdateStatusConstants.DOWNLOADING:
                     mUpdate.setProgress(Math.round(percent * 100));
                     mController.notifyUpdateStatusChanged(mUpdate, Constants.UPDATE_IN_PROGRESS);

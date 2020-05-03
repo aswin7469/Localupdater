@@ -124,7 +124,7 @@ public class MainActivity extends AppCompatActivity implements MainViewControlle
             switch (state) {
                 case Constants.UPDATE_FAILED:
                     mUpdate.setProgress(0);
-                    mUpdateProgressText.setText("0");
+                    mUpdateProgressText.setText("Update failed. Reboot to try again.");
                     mUpdateControl.setText(R.string.reboot_device);
                     mPauseResume.setVisibility(View.INVISIBLE);
                     break;
