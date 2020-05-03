@@ -44,6 +44,7 @@ class ABUpdateHandler {
             mBound = mUpdateEngine.bind(mUpdateEngineCallback);
         }
         try {
+            mUpdate.setUpdate(Utilities.copyUpdate(mUpdate.update()));
             String[] payloadProperties = Utilities.getPayloadProperties(mUpdate.update());
             Log.d(TAG, java.util.Arrays.toString(payloadProperties));
             long offset = Utilities.getZipOffset(mUpdate.getUpdatePath());
