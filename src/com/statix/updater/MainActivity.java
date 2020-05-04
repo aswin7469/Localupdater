@@ -11,12 +11,17 @@ import android.os.SystemProperties;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.statix.updater.history.HistoryUtils;
+import com.statix.updater.history.HistoryView;
 import com.statix.updater.misc.Constants;
 import com.statix.updater.misc.Utilities;
 import com.statix.updater.model.ABUpdate;
+
+import java.io.File;
 
 public class MainActivity extends AppCompatActivity implements MainViewController.StatusListener {
 
@@ -24,6 +29,7 @@ public class MainActivity extends AppCompatActivity implements MainViewControlle
     private ABUpdate mUpdate;
     private Button mUpdateControl;
     private Button mPauseResume;
+    private ImageButton mHistory;
     private MainViewController mController;
     private ProgressBar mUpdateProgress;
     private TextView mCurrentVersionView;
@@ -46,12 +52,14 @@ public class MainActivity extends AppCompatActivity implements MainViewControlle
         mUpdateView = (TextView) findViewById(R.id.update_view);
         mUpdateControl = (Button) findViewById(R.id.update_control);
         mPauseResume = (Button) findViewById(R.id.pause_resume);
+        mHistory = (ImageButton) findViewById(R.id.history_view);
         mCurrentVersionView = (TextView) findViewById(R.id.current_version_view);
         mUpdateProgressText = (TextView) findViewById(R.id.progressText);
         mUpdateSize = (TextView) findViewById(R.id.update_size);
         mAccent = Utilities.getSystemAccent(this);
         mUpdateControl.setBackgroundColor(mAccent);
         mCurrentVersionView.setText(getString(R.string.current_version, SystemProperties.get(Constants.STATIX_VERSION_PROP)));
+        mHistory.setOnClickListener(v -> new HistoryView(getApplicationContext()));
 
         // check for updoots in /sdcard/statix_updates
         mUpdate = Utilities.checkForUpdates(getApplicationContext());
@@ -118,15 +126,19 @@ public class MainActivity extends AppCompatActivity implements MainViewControlle
     public void onUpdateStatusChanged(ABUpdate update, int state) {
         runOnUiThread(() -> {
             int updateProgress = mUpdate.getProgress();
+            File f = new File(Constants.HISTORY_PATH + mUpdate.update().getName());
             switch (state) {
                 case Constants.UPDATE_FAILED:
                     mUpdate.setProgress(0);
+                    mUpdate.setState(state);
                     mUpdateProgressText.setText("Update failed. Reboot to try again.");
                     mUpdateControl.setText(R.string.reboot_device);
                     mPauseResume.setVisibility(View.INVISIBLE);
+                    HistoryUtils.writeObject(f, mUpdate);
                     break;
                 case Constants.UPDATE_FINALIZING:
                     mUpdate.setProgress(100);
+                    mUpdate.setState(state);
                     mUpdateProgressText.setText(R.string.update_finalizing);
                     break;
                 case Constants.UPDATE_IN_PROGRESS:
@@ -136,12 +148,16 @@ public class MainActivity extends AppCompatActivity implements MainViewControlle
                     mUpdateProgressText.setText(getString(R.string.installing_update, Integer.toString(updateProgress*100)));
                     mUpdateProgress.setVisibility(View.VISIBLE);
                     mUpdateProgress.setProgress(updateProgress);
+                    mUpdate.setState(state);
                     break;
                 case Constants.UPDATE_VERIFYING:
+                    mUpdate.setState(state);
                     mPauseResume.setVisibility(View.INVISIBLE);
                     mUpdateView.setText(R.string.verifying_update);
                 case Constants.UPDATE_SUCCEEDED:
+                    mUpdate.setState(state);
                     mUpdate.update().delete();
+                    HistoryUtils.writeObject(f, mUpdate);
                     mPauseResume.setVisibility(View.INVISIBLE);
                     mUpdateProgress.setVisibility(View.INVISIBLE);
                     mUpdateProgressText.setText(R.string.update_complete);

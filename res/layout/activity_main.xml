@@ -17,9 +17,9 @@
         app:srcCompat="@drawable/ic_ota_update" />
 
     <ImageButton
-        android:id="@+id/historyview"
-        android:layout_width="60dp"
-        android:layout_height="wrap_content"
+        android:id="@+id/history_view"
+        android:layout_width="28dp"
+        android:layout_height="28dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_marginTop="20dp"
