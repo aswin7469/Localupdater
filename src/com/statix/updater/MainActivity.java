@@ -137,9 +137,8 @@ public class MainActivity extends AppCompatActivity implements MainViewControlle
                     HistoryUtils.writeObject(f, mUpdate);
                     break;
                 case Constants.UPDATE_FINALIZING:
-                    mUpdate.setProgress(100);
                     mUpdate.setState(state);
-                    mUpdateProgressText.setText(R.string.update_finalizing);
+                    mUpdateProgressText.setText(R.string.update_finalizing, updateProgress);
                     break;
                 case Constants.UPDATE_IN_PROGRESS:
                     mPauseResume.setVisibility(View.VISIBLE);
