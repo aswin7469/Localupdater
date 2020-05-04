@@ -73,6 +73,10 @@ class ABUpdateHandler {
         return mBound;
     }
 
+    public void reconnect() {
+        mBound = mUpdateEngine.bind(mUpdateEngineCallback);
+    }
+
     public void suspend() {
         mUpdateEngine.suspend();
         mUpdate.setState(Constants.UPDATE_PAUSED);
