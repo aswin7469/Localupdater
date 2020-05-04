@@ -6,19 +6,30 @@
     android:layout_height="wrap_content"
     tools:context=".MainActivity">
 
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="14dp"
+        android:tint="@*android:color/accent_device_default_light"
+        app:srcCompat="@drawable/ic_ota_update" />
+
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="80dp"
         android:text="@string/welcome"
         android:textAlignment="center"
         android:textColor="?android:attr/textColorPrimary"
-        android:textSize="54sp" />
+        android:textSize="48sp" />
 
     <TextView
         android:id="@+id/current_version_view"
+        android:layout_marginTop="50dp"
         android:layout_marginStart="16dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -28,6 +39,7 @@
 
     <TextView
         android:id="@+id/update_view"
+        android:layout_marginTop="10dp"
         android:layout_marginStart="16dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -37,6 +49,7 @@
 
     <TextView
         android:id="@+id/update_size"
+        android:layout_marginTop="10dp"
         android:layout_marginStart="16dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -110,14 +123,5 @@
                 android:background="@drawable/sample_button" />
         </LinearLayout>
     </LinearLayout>
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="36dp"
-        android:layout_height="36dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="14dp"
-        app:srcCompat="@drawable/ic_ota_update" />
 
 </RelativeLayout>
