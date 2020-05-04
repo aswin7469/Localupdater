@@ -122,6 +122,7 @@ class ABUpdateHandler {
             if (errorCode != UpdateEngine.ErrorCodeConstants.SUCCESS) {
                 mUpdate.setProgress(0);
                 mUpdate.setState(Constants.UPDATE_FAILED);
+                mController.notifyUpdateStatusChanged(mUpdate, Constants.UPDATE_FAILED);
             }
         }
     };
