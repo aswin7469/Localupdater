@@ -16,6 +16,18 @@
         android:tint="@*android:color/accent_device_default_light"
         app:srcCompat="@drawable/ic_ota_update" />
 
+    <ImageButton
+        android:id="@+id/historyview"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="13dp"
+        android:layout_marginEnd="13dp"
+        android:background="@android:color/transparent"
+        android:tint="?android:attr/textColorPrimary"
+        app:srcCompat="@drawable/ic_history" />
+
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
