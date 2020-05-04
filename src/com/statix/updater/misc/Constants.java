@@ -21,5 +21,5 @@ public class Constants {
     public static final int UPDATE_VERIFYING = 6;
 
     // History constants
-    public static final String HISTORY_PATH = "/data/statix_updates/history";
+    public static final String HISTORY_PATH = "/data/statix_updates/history/";
 }

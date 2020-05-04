@@ -49,7 +49,7 @@ public class HistoryUtils {
             }
             str.close();
         } catch (IOException | ClassCastException excp) {
-            throw new IllegalArgumentException(excp.getMessage());
+            Log.e(TAG, "Unable to write history file");
         }
     }
 
