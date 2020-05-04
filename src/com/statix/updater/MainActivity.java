@@ -139,7 +139,7 @@ public class MainActivity extends AppCompatActivity implements MainViewControlle
                     break;
                 case Constants.UPDATE_FINALIZING:
                     mUpdate.setState(state);
-                    mUpdateProgressText.setText(R.string.update_finalizing, updateProgress);
+                    mUpdateProgressText.setText(getString(R.string.update_finalizing, updateProgress));
                     break;
                 case Constants.UPDATE_IN_PROGRESS:
                     mPauseResume.setVisibility(View.VISIBLE);
