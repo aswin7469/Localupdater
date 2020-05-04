@@ -30,7 +30,6 @@ public class MainActivity extends AppCompatActivity implements MainViewControlle
     private TextView mUpdateProgressText;
     private TextView mUpdateView;
     private TextView mUpdateSize;
-    private TextView mVersionView;
 
     private int mAccent;
     private final String TAG = "Updater";
@@ -50,11 +49,9 @@ public class MainActivity extends AppCompatActivity implements MainViewControlle
         mCurrentVersionView = (TextView) findViewById(R.id.current_version_view);
         mUpdateProgressText = (TextView) findViewById(R.id.progressText);
         mUpdateSize = (TextView) findViewById(R.id.update_size);
-        mVersionView = (TextView) findViewById(R.id.version_view);
         mAccent = Utilities.getSystemAccent(this);
         mUpdateControl.setBackgroundColor(mAccent);
         mCurrentVersionView.setText(getString(R.string.current_version, SystemProperties.get(Constants.STATIX_VERSION_PROP)));
-        mVersionView.setText(SystemProperties.get(Constants.STATIX_VERSION_PROP).split("-")[0]);
 
         // check for updoots in /sdcard/statix_updates
         mUpdate = Utilities.checkForUpdates(getApplicationContext());
