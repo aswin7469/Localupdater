@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity implements MainViewControlle
         mVersionView = (TextView) findViewById(R.id.version_view);
         mAccent = Utilities.getSystemAccent(this);
         mUpdateControl.setBackgroundColor(mAccent);
-        mCurrentVersionView.setText("Current version: " + SystemProperties.get(Constants.STATIX_VERSION_PROP));
+        mCurrentVersionView.setText(getString(R.string.current_version, SystemProperties.get(Constants.STATIX_VERSION_PROP)));
         mVersionView.setText(SystemProperties.get(Constants.STATIX_VERSION_PROP).split("-")[0]);
 
         // check for updoots in /sdcard/statix_updates
@@ -90,9 +90,9 @@ public class MainActivity extends AppCompatActivity implements MainViewControlle
             mUpdateHandler = ABUpdateHandler.getInstance(mUpdate.update(), getApplicationContext(), mController);
             mController.addUpdateStatusListener(this);
             // apply updoot button
-            String updateText = "Update zip to install: " + mUpdate.update().getName();
+            String updateText = getString(R.string.to_install, mUpdate.update().getName());
             mUpdateView.setText(updateText);
-            String updateSizeMB = "Update size: " + mUpdate.update().length()/(1024*1024) + "M";
+            String updateSizeMB = getString(R.string.update_size, Long.toString(mUpdate.update().length()/(1024*1024)));
             mUpdateSize.setText(updateSizeMB);
             mUpdateControl.setText(R.string.apply_update);
             mUpdateProgress.getIndeterminateDrawable().setColorFilter(Utilities.getSystemAccent(this),
@@ -101,15 +101,12 @@ public class MainActivity extends AppCompatActivity implements MainViewControlle
             mPauseResume.setBackgroundColor(Utilities.getSystemAccent(this));
             mPauseResume.setVisibility(View.INVISIBLE);
             mPauseResume.setOnClickListener(v -> {
-                Log.d(TAG, "Pause/resume");
                 boolean updatePaused = mUpdate.state() == Constants.UPDATE_PAUSED;
                 if (updatePaused) {
                     mPauseResume.setText(R.string.resume_update);
-                    Log.d(TAG, "Update paused");
                     mUpdateHandler.suspend();
                 } else {
                     mPauseResume.setText(R.string.pause_update);
-                    Log.d(TAG, "Update resumed");
                     mUpdateHandler.resume();
                 }
             });
@@ -139,7 +136,7 @@ public class MainActivity extends AppCompatActivity implements MainViewControlle
                     mPauseResume.setVisibility(View.VISIBLE);
                     mPauseResume.setText(R.string.pause_update);
                     mUpdateControl.setText(R.string.cancel_update);
-                    mUpdateProgressText.setText("Installing... " + Integer.toString(updateProgress) + "%");
+                    mUpdateProgressText.setText(getString(R.string.installing_update, Integer.toString(updateProgress*100)));
                     mUpdateProgress.setVisibility(View.VISIBLE);
                     mUpdateProgress.setProgress(updateProgress);
                     break;
