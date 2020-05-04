@@ -18,12 +18,12 @@
 
     <ImageButton
         android:id="@+id/historyview"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="13dp"
-        android:layout_marginEnd="13dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
         android:background="@android:color/transparent"
         android:tint="?android:attr/textColorPrimary"
         app:srcCompat="@drawable/ic_history" />
