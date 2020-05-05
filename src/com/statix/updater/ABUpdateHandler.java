@@ -74,7 +74,9 @@ class ABUpdateHandler {
     }
 
     public void reconnect() {
-        mBound = mUpdateEngine.bind(mUpdateEngineCallback);
+        if (!mBound) {
+            mBound = mUpdateEngine.bind(mUpdateEngineCallback);
+        }
     }
 
     public void suspend() {

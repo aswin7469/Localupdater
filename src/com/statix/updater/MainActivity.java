@@ -93,9 +93,6 @@ public class MainActivity extends AppCompatActivity implements MainViewControlle
     private void setUpView() {
         if (mUpdate != null) {
             mUpdateHandler = ABUpdateHandler.getInstance(mUpdate.update(), getApplicationContext(), mController);
-            if (!mUpdateHandler.isBound()) {
-                mUpdateHandler.reconnect();
-            }
             mController.addUpdateStatusListener(this);
             // apply updoot button
             String updateText = getString(R.string.to_install, mUpdate.update().getName());
