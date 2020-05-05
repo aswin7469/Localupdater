@@ -2,9 +2,10 @@ package com.statix.updater;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.preference.PreferenceManager;
 
 import android.content.Context;
-import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.PowerManager;
 import android.os.SystemProperties;
@@ -32,6 +33,7 @@ public class MainActivity extends AppCompatActivity implements MainViewControlle
     private ImageButton mHistory;
     private MainViewController mController;
     private ProgressBar mUpdateProgress;
+    private SharedPreferences mSharedPrefs;
     private TextView mCurrentVersionView;
     private TextView mUpdateProgressText;
     private TextView mUpdateView;
@@ -60,6 +62,9 @@ public class MainActivity extends AppCompatActivity implements MainViewControlle
         mUpdateControl.setBackgroundColor(mAccent);
         mCurrentVersionView.setText(getString(R.string.current_version, SystemProperties.get(Constants.STATIX_VERSION_PROP)));
         mHistory.setOnClickListener(v -> new HistoryView(getApplicationContext()));
+
+        // set up prefs
+        mSharedPrefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
 
         // check for updoots in /sdcard/statix_updates
         mUpdate = Utilities.checkForUpdates(getApplicationContext());
@@ -94,6 +99,9 @@ public class MainActivity extends AppCompatActivity implements MainViewControlle
         if (mUpdate != null) {
             mUpdateHandler = ABUpdateHandler.getInstance(mUpdate.update(), getApplicationContext(), mController);
             mController.addUpdateStatusListener(this);
+            if (mSharedPrefs.getBoolean(Constants.PREF_INSTALLING_SUSPENDED_AB, false) || mSharedPrefs.getBoolean(Constants.PREF_INSTALLING_AB, false) || mSharedPrefs.getBoolean(Constants.PREF_INSTALLED_AB, false)) {
+                mUpdateHandler.reconnect();
+            }
             // apply updoot button
             String updateText = getString(R.string.to_install, mUpdate.update().getName());
             mUpdateView.setText(updateText);
@@ -106,19 +114,37 @@ public class MainActivity extends AppCompatActivity implements MainViewControlle
             mPauseResume.setBackgroundColor(Utilities.getSystemAccent(this));
             mPauseResume.setVisibility(View.INVISIBLE);
             mPauseResume.setOnClickListener(v -> {
-                boolean updatePaused = mUpdate.state() == Constants.UPDATE_PAUSED;
+                boolean updatePaused = mSharedPrefs.getBoolean(Constants.PREF_INSTALLING_SUSPENDED_AB, false);
                 if (updatePaused) {
-                    mPauseResume.setText(R.string.resume_update);
-                    mUpdateHandler.suspend();
-                } else {
                     mPauseResume.setText(R.string.pause_update);
                     mUpdateHandler.resume();
+                    mUpdateProgress.setVisibility(View.VISIBLE);
+                } else {
+                    mPauseResume.setText(R.string.resume_update);
+                    mUpdateHandler.suspend();
                 }
             });
+            setButtonVisibilities();
         } else {
             mUpdateView.setText(R.string.no_update_available);
             mUpdateControl.setText(R.string.check_for_update);
             mPauseResume.setVisibility(View.INVISIBLE);
+        }
+    }
+
+    private void setButtonVisibilities() {
+        if (mSharedPrefs.getBoolean(Constants.PREF_INSTALLING_SUSPENDED_AB, false)) {
+            mPauseResume.setVisibility(View.VISIBLE);
+            mPauseResume.setText(R.string.resume_update);
+            mUpdateControl.setText(R.string.cancel_update);
+        } else if (mSharedPrefs.getBoolean(Constants.PREF_INSTALLED_AB, false)) {
+            mPauseResume.setVisibility(View.VISIBLE);
+            mUpdateControl.setText(R.string.reboot_device);
+        } else if (mSharedPrefs.getBoolean(Constants.PREF_INSTALLING_AB, false)) {
+            mPauseResume.setVisibility(View.VISIBLE);
+            mPauseResume.setText(R.string.pause_update);
+            mUpdateControl.setText(R.string.cancel_update);
+            mUpdateProgress.setVisibility(View.VISIBLE);
         }
     }
 
@@ -131,20 +157,20 @@ public class MainActivity extends AppCompatActivity implements MainViewControlle
                 case Constants.UPDATE_FAILED:
                     update.setProgress(0);
                     mUpdateProgress.setVisibility(View.INVISIBLE);
-                    mUpdateProgressText.setText("Update failed. Reboot to try again.");
+                    mUpdateProgressText.setText(R.string.reboot_try_again);
                     mUpdateControl.setText(R.string.reboot_device);
                     mPauseResume.setVisibility(View.INVISIBLE);
                     HistoryUtils.writeObject(f, mUpdate);
                     break;
                 case Constants.UPDATE_FINALIZING:
                     update.setState(state);
-                    mUpdateProgressText.setText(getString(R.string.update_finalizing, updateProgress));
+                    mUpdateProgressText.setText(getString(R.string.update_finalizing, Integer.toString(updateProgress)));
                     break;
                 case Constants.UPDATE_IN_PROGRESS:
                     mPauseResume.setVisibility(View.VISIBLE);
                     mPauseResume.setText(R.string.pause_update);
                     mUpdateControl.setText(R.string.cancel_update);
-                    mUpdateProgressText.setText(getString(R.string.installing_update, Integer.toString(updateProgress*100)));
+                    mUpdateProgressText.setText(getString(R.string.installing_update, Integer.toString(updateProgress)));
                     mUpdateProgress.setVisibility(View.VISIBLE);
                     mUpdateProgress.setProgress(updateProgress);
                     break;
@@ -152,8 +178,9 @@ public class MainActivity extends AppCompatActivity implements MainViewControlle
                     mPauseResume.setVisibility(View.INVISIBLE);
                     mUpdateView.setText(R.string.verifying_update);
                 case Constants.UPDATE_SUCCEEDED:
-                    update.update().delete();
+                    Utilities.cleanUpdateDir(getApplicationContext());
                     HistoryUtils.writeObject(f, mUpdate);
+                    Utilities.putPref(Constants.PREF_INSTALLED_AB, true, getApplicationContext());
                     mPauseResume.setVisibility(View.INVISIBLE);
                     mUpdateProgress.setVisibility(View.INVISIBLE);
                     mUpdateProgressText.setText(R.string.update_complete);
@@ -171,6 +198,7 @@ public class MainActivity extends AppCompatActivity implements MainViewControlle
 
     private void rebootDevice() {
         PowerManager pm = (PowerManager) this.getSystemService(Context.POWER_SERVICE);
+        Utilities.putPref(Constants.PREF_INSTALLED_AB, false, getApplicationContext());
         pm.reboot("Update complete");
     }
 
