@@ -125,12 +125,11 @@ public class MainActivity extends AppCompatActivity implements MainViewControlle
     @Override
     public void onUpdateStatusChanged(ABUpdate update, int state) {
         runOnUiThread(() -> {
-            int updateProgress = mUpdate.getProgress();
-            File f = new File(Constants.HISTORY_PATH + mUpdate.update().getName());
+            int updateProgress = update.getProgress();
+            File f = new File(Constants.HISTORY_PATH + update.update().getName());
             switch (state) {
                 case Constants.UPDATE_FAILED:
-                    mUpdate.setProgress(0);
-                    mUpdate.setState(state);
+                    update.setProgress(0);
                     mUpdateProgress.setVisibility(View.INVISIBLE);
                     mUpdateProgressText.setText("Update failed. Reboot to try again.");
                     mUpdateControl.setText(R.string.reboot_device);
@@ -138,7 +137,7 @@ public class MainActivity extends AppCompatActivity implements MainViewControlle
                     HistoryUtils.writeObject(f, mUpdate);
                     break;
                 case Constants.UPDATE_FINALIZING:
-                    mUpdate.setState(state);
+                    update.setState(state);
                     mUpdateProgressText.setText(getString(R.string.update_finalizing, updateProgress));
                     break;
                 case Constants.UPDATE_IN_PROGRESS:
@@ -148,15 +147,12 @@ public class MainActivity extends AppCompatActivity implements MainViewControlle
                     mUpdateProgressText.setText(getString(R.string.installing_update, Integer.toString(updateProgress*100)));
                     mUpdateProgress.setVisibility(View.VISIBLE);
                     mUpdateProgress.setProgress(updateProgress);
-                    mUpdate.setState(state);
                     break;
                 case Constants.UPDATE_VERIFYING:
-                    mUpdate.setState(state);
                     mPauseResume.setVisibility(View.INVISIBLE);
                     mUpdateView.setText(R.string.verifying_update);
                 case Constants.UPDATE_SUCCEEDED:
-                    mUpdate.setState(state);
-                    mUpdate.update().delete();
+                    update.update().delete();
                     HistoryUtils.writeObject(f, mUpdate);
                     mPauseResume.setVisibility(View.INVISIBLE);
                     mUpdateProgress.setVisibility(View.INVISIBLE);
