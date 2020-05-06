@@ -95,6 +95,8 @@ public class MainActivity extends AppCompatActivity implements MainViewControlle
             } else if (buttonText.equals(apply)){
                 mUpdateHandler.handleUpdate();
                 mUpdateControl.setText(R.string.cancel_update);
+                mPauseResume.setVisibility(View.VISIBLE);
+                mPauseResume.setText(R.string.pause_update);
             } else { // reboot
                 showRebootDialog();
             }
