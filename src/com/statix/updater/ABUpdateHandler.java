@@ -95,6 +95,11 @@ class ABUpdateHandler {
         mUpdate.setState(Constants.UPDATE_STOPPED);
     }
 
+    public void unbind() {
+        mBound = !mUpdateEngine.unbind();
+        Log.d(TAG, "Unbound callback from update engine");
+    }
+
     private final UpdateEngineCallback mUpdateEngineCallback = new UpdateEngineCallback() {
         @Override
         public void onStatusUpdate(int status, float percent) {

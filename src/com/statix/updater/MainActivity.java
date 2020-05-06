@@ -197,6 +197,27 @@ public class MainActivity extends AppCompatActivity implements MainViewControlle
         super.onStop();
     }
 
+    @Override
+    protected void onResume() {
+        mUpdate = Utilities.checkForUpdates(getApplicationContext());
+        if (mUpdate != null) {
+            mUpdateHandler = ABUpdateHandler.getInstance(mUpdate.update(), getApplicationContext(), mController);
+            mUpdateHandler.reconnect();
+            setUpView();
+        }
+        super.onResume();
+    }
+
+    @Override
+    protected void onPause() {
+        mUpdate = Utilities.checkForUpdates(getApplicationContext());
+        if (mUpdate != null) {
+            mUpdateHandler = ABUpdateHandler.getInstance(mUpdate.update(), getApplicationContext(), mController);
+            mUpdateHandler.unbind();
+        }
+        super.onPause();
+    }
+
     private void rebootDevice() {
         PowerManager pm = (PowerManager) this.getSystemService(Context.POWER_SERVICE);
         Utilities.putPref(Constants.PREF_INSTALLED_AB, false, getApplicationContext());
