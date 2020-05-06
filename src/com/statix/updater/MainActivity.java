@@ -219,8 +219,11 @@ public class MainActivity extends AppCompatActivity implements MainViewControlle
     protected void onResume() {
         super.onResume();
         mController.addUpdateStatusListener(this);
-        mUpdateHandler.reconnect();
-        Log.d(TAG, "Reconnected to update engine");
+        if (mUpdateHandler != null) {
+            mUpdateHandler.reconnect();
+            Log.d(TAG, "Reconnected to update engine");
+        }
+        setButtonVisibilities();
     }
 
     @Override
