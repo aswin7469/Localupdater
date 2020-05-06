@@ -162,7 +162,7 @@ public class MainActivity extends AppCompatActivity implements MainViewControlle
     public void onUpdateStatusChanged(ABUpdate update, int state) {
         runOnUiThread(() -> {
             int updateProgress = update.getProgress();
-            File f = new File(Constants.HISTORY_PATH + update.update().getName());
+            File f = new File(Constants.HISTORY_PATH);
             mUpdate.setState(state);
             switch (state) {
                 case Constants.UPDATE_FAILED:
