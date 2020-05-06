@@ -105,7 +105,7 @@ public class MainActivity extends AppCompatActivity implements MainViewControlle
 
     private void setUpView() {
         if (mUpdate != null) {
-            mUpdateHandler = ABUpdateHandler.getInstance(mUpdate.update(), getApplicationContext(), mController);
+            mUpdateHandler = ABUpdateHandler.getInstance(mUpdate, getApplicationContext(), mController);
             mController.addUpdateStatusListener(this);
             if (mSharedPrefs.getBoolean(Constants.PREF_INSTALLING_SUSPENDED_AB, false) || mSharedPrefs.getBoolean(Constants.PREF_INSTALLING_AB, false) || mSharedPrefs.getBoolean(Constants.PREF_INSTALLED_AB, false)) {
                 mUpdateHandler.reconnect();
@@ -217,7 +217,7 @@ public class MainActivity extends AppCompatActivity implements MainViewControlle
     protected void onResume() {
         mUpdate = Utilities.checkForUpdates(getApplicationContext());
         if (mUpdate != null) {
-            mUpdateHandler = ABUpdateHandler.getInstance(mUpdate.update(), getApplicationContext(), mController);
+            mUpdateHandler = ABUpdateHandler.getInstance(mUpdate, getApplicationContext(), mController);
             mUpdateHandler.reconnect();
             setUpView();
         }
@@ -228,7 +228,7 @@ public class MainActivity extends AppCompatActivity implements MainViewControlle
     protected void onPause() {
         mUpdate = Utilities.checkForUpdates(getApplicationContext());
         if (mUpdate != null) {
-            mUpdateHandler = ABUpdateHandler.getInstance(mUpdate.update(), getApplicationContext(), mController);
+            mUpdateHandler = ABUpdateHandler.getInstance(mUpdate, getApplicationContext(), mController);
             mUpdateHandler.unbind();
         }
         super.onPause();

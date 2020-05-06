@@ -25,14 +25,14 @@ class ABUpdateHandler {
 
     private static final String TAG = "ABUpdateHandler";
 
-    private ABUpdateHandler(File update, Context ctx, MainViewController controller) {
+    private ABUpdateHandler(ABUpdate update, Context ctx, MainViewController controller) {
         mContext = ctx;
         mController = controller;
-        mUpdate = new ABUpdate(update);
+        mUpdate = update;
         mUpdateEngine = new UpdateEngine();
     }
 
-    public static synchronized ABUpdateHandler getInstance(File update, Context context,
+    public static synchronized ABUpdateHandler getInstance(ABUpdate update, Context context,
                                                            MainViewController controller) {
         if (sInstance == null) {
             sInstance = new ABUpdateHandler(update, context, controller);
