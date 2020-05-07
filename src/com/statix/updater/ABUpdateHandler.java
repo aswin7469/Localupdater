@@ -141,4 +141,9 @@ class ABUpdateHandler {
             }
         }
     };
+
+    public void setPerformanceMode(boolean checked) {
+        mUpdateEngine.setPerformanceMode(checked);
+        Utilities.putPref(Constants.ENABLE_AB_PERF_MODE, checked, mContext);
+    }
 }

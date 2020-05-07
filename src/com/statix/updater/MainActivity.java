@@ -1,5 +1,10 @@
 package com.statix.updater;
 
+import static com.statix.updater.misc.Constants.PREF_INSTALLED_AB;
+import static com.statix.updater.misc.Constants.PREF_INSTALLING_AB;
+import static com.statix.updater.misc.Constants.PREF_INSTALLING_SUSPENDED_AB;
+import static com.statix.updater.misc.Constants.ENABLE_AB_PERF_MODE;
+
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.preference.PreferenceManager;
@@ -15,6 +20,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ProgressBar;
+import android.widget.Switch;
 import android.widget.TextView;
 
 import com.statix.updater.history.HistoryUtils;
@@ -38,6 +44,7 @@ public class MainActivity extends AppCompatActivity implements MainViewControlle
     private MainViewController mController;
     private ProgressBar mUpdateProgress;
     private SharedPreferences mSharedPrefs;
+    private Switch mABPerfMode;
     private TextView mCurrentVersionView;
     private TextView mUpdateProgressText;
     private TextView mUpdateView;
@@ -59,6 +66,7 @@ public class MainActivity extends AppCompatActivity implements MainViewControlle
         mUpdateControl = (Button) findViewById(R.id.update_control);
         mPauseResume = (Button) findViewById(R.id.pause_resume);
         mHistory = (ImageButton) findViewById(R.id.history_view);
+        mABPerfMode = (Switch) findViewById(R.id.perf_mode_switch);
         mCurrentVersionView = (TextView) findViewById(R.id.current_version_view);
         mUpdateProgressText = (TextView) findViewById(R.id.progressText);
         mUpdateSize = (TextView) findViewById(R.id.update_size);
@@ -109,9 +117,19 @@ public class MainActivity extends AppCompatActivity implements MainViewControlle
         if (mUpdate != null) {
             mUpdateHandler = ABUpdateHandler.getInstance(mUpdate, getApplicationContext(), mController);
             mController.addUpdateStatusListener(this);
-            if (mSharedPrefs.getBoolean(Constants.PREF_INSTALLING_SUSPENDED_AB, false) || mSharedPrefs.getBoolean(Constants.PREF_INSTALLING_AB, false) || mSharedPrefs.getBoolean(Constants.PREF_INSTALLED_AB, false)) {
+            if (mSharedPrefs.getBoolean(PREF_INSTALLING_SUSPENDED_AB, false)
+                    || mSharedPrefs.getBoolean(PREF_INSTALLING_AB, false)
+                    || mSharedPrefs.getBoolean(PREF_INSTALLED_AB, false)) {
                 mUpdateHandler.reconnect();
             }
+            // ab perf switch
+            mABPerfMode.setVisibility(View.VISIBLE);
+            mABPerfMode.setChecked(mSharedPrefs.getBoolean(ENABLE_AB_PERF_MODE, false));
+            mABPerfMode.setOnClickListener(v -> {
+                mUpdateHandler.setPerformanceMode(mABPerfMode.isChecked());
+                Log.d(TAG, Boolean.toString(mSharedPrefs.getBoolean(ENABLE_AB_PERF_MODE, false)));
+            });
+            mUpdateHandler.setPerformanceMode(mABPerfMode.isChecked());
             // apply updoot button
             String updateText = getString(R.string.to_install, mUpdate.update().getName());
             mUpdateView.setText(updateText);
@@ -139,6 +157,7 @@ public class MainActivity extends AppCompatActivity implements MainViewControlle
             mUpdateView.setText(R.string.no_update_available);
             mUpdateControl.setText(R.string.check_for_update);
             mPauseResume.setVisibility(View.INVISIBLE);
+            mABPerfMode.setVisibility(View.INVISIBLE);
         }
     }
 
@@ -156,6 +175,7 @@ public class MainActivity extends AppCompatActivity implements MainViewControlle
             mUpdateControl.setText(R.string.cancel_update);
             mUpdateProgress.setVisibility(View.VISIBLE);
         }
+        mABPerfMode.setChecked(mSharedPrefs.getBoolean(ENABLE_AB_PERF_MODE, false));
     }
 
     @Override
