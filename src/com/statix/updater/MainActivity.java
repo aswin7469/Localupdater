@@ -195,6 +195,7 @@ public class MainActivity extends AppCompatActivity implements MainViewControlle
                     } catch (IOException | JSONException e) {
                         Log.e(TAG, "Unable to write to update history.");
                     }
+                    Utilities.cleanInternalDir();
                     break;
                 case Constants.UPDATE_FINALIZING:
                     mUpdateProgress.setProgress(updateProgress);
@@ -214,6 +215,7 @@ public class MainActivity extends AppCompatActivity implements MainViewControlle
                     mUpdateView.setText(R.string.verifying_update);
                 case Constants.UPDATE_SUCCEEDED:
                     Utilities.cleanUpdateDir(getApplicationContext());
+                    Utilities.cleanInternalDir();
                     try {
                         HistoryUtils.writeUpdateToJson(f, update);
                     } catch (IOException | JSONException e) {
