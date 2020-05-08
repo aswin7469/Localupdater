@@ -239,10 +239,12 @@ public class MainActivity extends AppCompatActivity implements MainViewControlle
     protected void onResume() {
         super.onResume();
         ABUpdate update = Utilities.checkForUpdates(getApplicationContext());
-        if (!update.equals(mUpdate)) {
+        if (update != null && !update.equals(mUpdate)) {
             mUpdate = update;
         }
-        mController.addUpdateStatusListener(this);
+        if (mController != null) {
+            mController.addUpdateStatusListener(this);
+        }
         if (mUpdateHandler != null) {
             mUpdateHandler.reconnect();
             Log.d(TAG, "Reconnected to update engine");
@@ -252,7 +254,9 @@ public class MainActivity extends AppCompatActivity implements MainViewControlle
 
     @Override
     protected void onPause() {
-        mController.removeUpdateStatusListener(this);
+        if (mController != null) {
+            mController.removeUpdateStatusListener(this);
+        }
         if (mUpdateHandler != null) {
             mUpdateHandler.unbind();
             Log.d(TAG, "Unbound callback from update engine");
