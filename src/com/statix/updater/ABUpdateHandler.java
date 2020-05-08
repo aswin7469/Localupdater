@@ -40,13 +40,14 @@ class ABUpdateHandler {
         return sInstance;
     }
 
-    void handleUpdate() {
+    synchronized void handleUpdate() {
         if (!mBound) {
             mBound = mUpdateEngine.bind(mUpdateEngineCallback);
         }
         try {
+            Utilities.copyUpdate(mUpdate);
+            Log.d(TAG, mUpdate.update().toString());
             String[] payloadProperties = Utilities.getPayloadProperties(mUpdate.update());
-            Log.d(TAG, java.util.Arrays.toString(payloadProperties));
             long offset = Utilities.getZipOffset(mUpdate.getUpdatePath());
             String zipFileUri = "file://" + mUpdate.getUpdatePath();
             mUpdate.setState(Constants.UPDATE_IN_PROGRESS);
@@ -60,10 +61,6 @@ class ABUpdateHandler {
             mUpdate.setState(Constants.UPDATE_FAILED);
             mController.notifyUpdateStatusChanged(mUpdate, Constants.UPDATE_FAILED);
         }
-    }
-
-    boolean isBound() {
-        return mBound;
     }
 
     public void reconnect() {
