@@ -167,7 +167,7 @@ public class MainActivity extends AppCompatActivity implements MainViewControlle
             mPauseResume.setText(R.string.resume_update);
             mUpdateControl.setText(R.string.cancel_update);
         } else if (mSharedPrefs.getBoolean(PREF_INSTALLED_AB, false)) {
-            mPauseResume.setVisibility(View.VISIBLE);
+            mPauseResume.setVisibility(View.INVISIBLE);
             mUpdateControl.setText(R.string.reboot_device);
         } else if (mSharedPrefs.getBoolean(PREF_INSTALLING_AB, false)) {
             mPauseResume.setVisibility(View.VISIBLE);
