@@ -22,7 +22,7 @@ import java.util.HashMap;
 
 public class HistoryUtils {
 
-    public static void writeUpdateToJson(File historyFile, ABUpdate update) throws IOException, JSONException {
+    public static synchronized void writeUpdateToJson(File historyFile, ABUpdate update) throws IOException, JSONException {
         boolean updateSuccessful = update.state() == Constants.UPDATE_SUCCEEDED;
         String updateName = update.update().getName();
         ArrayList<HistoryCard> cards = readFromJson(historyFile);
@@ -44,7 +44,7 @@ public class HistoryUtils {
         bufferedWriter.close();
     }
 
-    public static ArrayList<HistoryCard> readFromJson(File historyFile) throws IOException, JSONException {
+    public static synchronized ArrayList<HistoryCard> readFromJson(File historyFile) throws IOException, JSONException {
         if (historyFile.exists()) {
             FileReader fr = new FileReader(historyFile);
             BufferedReader bufferedReader = new BufferedReader(fr);
