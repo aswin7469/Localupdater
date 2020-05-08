@@ -238,6 +238,10 @@ public class MainActivity extends AppCompatActivity implements MainViewControlle
     @Override
     protected void onResume() {
         super.onResume();
+        ABUpdate update = Utilities.checkForUpdates(getApplicationContext());
+        if (!update.equals(mUpdate)) {
+            mUpdate = update;
+        }
         mController.addUpdateStatusListener(this);
         if (mUpdateHandler != null) {
             mUpdateHandler.reconnect();
