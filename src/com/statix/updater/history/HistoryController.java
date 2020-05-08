@@ -63,7 +63,7 @@ public class HistoryController extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         if (convertView == null) {
-            convertView = mLayoutInflater.inflate(R.layout.update_cardview, parent);
+            convertView = mLayoutInflater.inflate(R.layout.update_cardview, parent, false);
         }
         HistoryCard card = mCards.get(position);
         TextView title = convertView.findViewById(R.id.title);
