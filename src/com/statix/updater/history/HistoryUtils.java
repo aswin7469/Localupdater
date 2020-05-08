@@ -30,6 +30,7 @@ public class HistoryUtils {
             cards = new ArrayList<>();
         }
         cards.add(new HistoryCard(updateName, updateSuccessful));
+        Collections.sort(cards);
         HashMap<String, Boolean> cardMap = new HashMap<>();
         // convert cards to a map
         for (HistoryCard card : cards) {
@@ -63,6 +64,7 @@ public class HistoryUtils {
                 boolean success = historyPairs.getBoolean(updateNames.getString(i));
                 ret.add(new HistoryCard(updateNames.getString(i), success));
             }
+            Collections.sort(ret);
             Collections.reverse(ret);
             return ret;
         } else {
