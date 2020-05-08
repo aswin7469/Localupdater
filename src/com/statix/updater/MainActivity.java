@@ -182,6 +182,7 @@ public class MainActivity extends AppCompatActivity implements MainViewControlle
     public void onUpdateStatusChanged(ABUpdate update, int state) {
         int updateProgress = update.getProgress();
         File f = new File(Constants.HISTORY_PATH);
+        mUpdate.setState(state);
         runOnUiThread(() -> {
             switch (state) {
                 case Constants.UPDATE_FAILED:
@@ -191,7 +192,7 @@ public class MainActivity extends AppCompatActivity implements MainViewControlle
                     mUpdateControl.setText(R.string.reboot_device);
                     mPauseResume.setVisibility(View.INVISIBLE);
                     try {
-                        HistoryUtils.writeUpdateToJson(f, update);
+                        HistoryUtils.writeUpdateToJson(f, mUpdate);
                     } catch (IOException | JSONException e) {
                         Log.e(TAG, "Unable to write to update history.");
                     }
@@ -217,7 +218,7 @@ public class MainActivity extends AppCompatActivity implements MainViewControlle
                     Utilities.cleanUpdateDir(getApplicationContext());
                     Utilities.cleanInternalDir();
                     try {
-                        HistoryUtils.writeUpdateToJson(f, update);
+                        HistoryUtils.writeUpdateToJson(f, mUpdate);
                     } catch (IOException | JSONException e) {
                         Log.e(TAG, "Unable to write to update history.");
                     }
