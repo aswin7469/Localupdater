@@ -269,7 +269,7 @@ public class MainActivity extends AppCompatActivity implements MainViewControlle
 
     private void rebootDevice() {
         PowerManager pm = (PowerManager) this.getSystemService(Context.POWER_SERVICE);
-        Utilities.putPref(Constants.PREF_INSTALLED_AB, false, getApplicationContext());
+        Utilities.resetPreferences(getApplicationContext());
         pm.reboot("Update complete");
     }
 
