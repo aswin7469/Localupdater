@@ -57,6 +57,9 @@ public class HistoryUtils {
             }
             bufferedReader.close();
             String updates = stringBuilder.toString();
+            if (updates == null || updates.isEmpty()) {
+                return new ArrayList<HistoryCard>();
+            }
             JSONObject historyPairs = new JSONObject(updates);
             JSONArray updateNames = historyPairs.names();
             ArrayList<HistoryCard> ret = new ArrayList<>();
