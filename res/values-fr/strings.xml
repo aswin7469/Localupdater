@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Application de mise à jour</string>
+    <string name="action_settings">Paramètres</string>
+    <string name="welcome">StatiXOS</string>
+    <string name="select_update">Sélectionner la mise à jour</string>
+    <string name="pause_update">Mettre la mise à jour en pause</string>
+    <string name="resume_update">Reprendre la mise à jour</string>
+    <string name="cancel_update">Annuler la mise à jour</string>
+    <string name="apply_update">Appliquer la mise à jour</string>
+    <string name="no_update_available">Pas de mise à jour disponible. Déposez un fichier de mise à jour sur /sdcard/Android/data/com.statix.updater/files/</string>
+    <string name="check_for_update">Contrôler la présence d\'une mise à jour</string>
+    <string name="reboot_device">Redémarrer l\'appareil</string>
+    <string name="update_finalizing">Finalisation complète à %1$s%%</string>
+    <string name="cancel">Annuler</string>
+    <string name="ok">Ok</string>
+    <string name="restart_title">Redémarrer l\'appareil ?</string>
+    <string name="reboot_message">Un redémarrage est nécessaire pour terminer la mise à jour. Redémarrer maintenant ?</string>
+    <string name="verifying_update">Contrôle de la mise à jour…</string>
+    <string name="update_complete">Mise à jour terminée !</string>
+    <string name="installing_update">Installation complète à %1$s%%</string>
+    <string name="update_size">Taille de la mise à jour : %1$sM</string>
+    <string name="current_version">Version actuelle : %1$s</string>
+    <string name="to_install">Fichier zip de mise à jour à installer : %1$s</string>
+    <string name="reboot_try_again">Échec de la mise à jour. Redémarrez pour essayer à nouveau.</string>
+    <string name="history_title">Historique des mises à jour</string>
+    <string name="performance_mode">Mode performance</string>
+    <string name="succeeded">Réussi</string>
+    <string name="failed">Échec</string>
+    <string name="update_status">Avancement de la mise à jour : %1$s</string>
+</resources>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Actualizador</string>
+    <string name="action_settings">Ajustes</string>
+    <string name="welcome">StatiXOS</string>
+    <string name="select_update">Seleccionar actualización</string>
+    <string name="pause_update">Pausar actualización</string>
+    <string name="resume_update">Reanudar actualización</string>
+    <string name="cancel_update">Cancelar actualización</string>
+    <string name="apply_update">Actualizar ahora</string>
+    <string name="no_update_available">No hay actualizaciones disponibles. Introduce el paquete de actualización manual a la ruta /sdcard/Android/data/com.statix.updater/files/</string>
+    <string name="check_for_update">Revisar por actualizaciones</string>
+    <string name="reboot_device">Reiniciar el dispositivo</string>
+    <string name="update_finalizing">Finalizando… %1$s%% completo</string>
+    <string name="cancel">Cancelar</string>
+    <string name="ok">OK</string>
+    <string name="restart_title">¿Reiniciar el dispositivo?</string>
+    <string name="reboot_message">Es necesario reiniciar para completar la actualización. ¿Hacerlo ahora?</string>
+    <string name="verifying_update">Verificando actualización…</string>
+    <string name="update_complete">¡Actualización completa!</string>
+    <string name="installing_update">Instalando… %1$s%% completo</string>
+    <string name="update_size">Tamaño de la actualización: %1$sM</string>
+    <string name="current_version">Versión actual: %1$s</string>
+    <string name="to_install">Archivo zip a instalar: %1$s</string>
+    <string name="reboot_try_again">Actualización fallida. Reinicia el dispositivo e inténtalo de nuevo.</string>
+    <string name="history_title">Historial de actualizaciones</string>
+    <string name="performance_mode">Modo Performance</string>
+    <string name="succeeded">Tuvo éxito</string>
+    <string name="failed">Ha fallado</string>
+    <string name="update_status">Estado de la actualización: %1$s</string>
+</resources>

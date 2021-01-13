@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Aktualizator</string>
+    <string name="action_settings">Ustawienia</string>
+    <string name="welcome">StatiXOS</string>
+    <string name="select_update">Wybierz aktualizację</string>
+    <string name="pause_update">Wstrzymaj aktualizację</string>
+    <string name="resume_update">Wznów aktualizację</string>
+    <string name="cancel_update">Anuluj aktualizację</string>
+    <string name="apply_update">Zastosuj aktualizację</string>
+    <string name="no_update_available">Brak dostępnej aktualizacji. Prześlij aktualizację do
+/sdcard/Android/data/com.statix.updater/files/</string>
+    <string name="check_for_update">Sprawdź aktualizacje</string>
+    <string name="reboot_device">Uruchom ponownie urządzenie</string>
+    <string name="update_finalizing">Kończenie… %1$s%% ukończono</string>
+    <string name="cancel">Anuluj</string>
+    <string name="ok">OK</string>
+    <string name="restart_title">Zrestartować urządzenie?</string>
+    <string name="reboot_message">Aby zakończyć aktualizację, konieczne jest ponowne uruchomienie. Zrestartuj teraz?</string>
+    <string name="verifying_update">Weryfikuję aktualizację…</string>
+    <string name="update_complete">Aktualizacja zakończona!</string>
+    <string name="installing_update">Instalowanie…%1$s%% zakończone</string>
+    <string name="update_size">Rozmiar aktualizacji: %1$sM</string>
+    <string name="current_version">Obecna wersja: %1$s</string>
+    <string name="to_install">Zaktualizuj zip, aby zainstalować: %1$s</string>
+    <string name="reboot_try_again">Aktualizacja nie powiodła się. Uruchom ponownie, aby spróbować ponownie.</string>
+    <string name="history_title">Historia aktualizacji</string>
+    <string name="performance_mode">Tryb wydajności</string>
+    <string name="succeeded">Udało się</string>
+    <string name="failed">Nie udało się</string>
+    <string name="update_status">Stan aktualizacji: %1$s</string>
+</resources>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Updater</string>
+    <string name="action_settings">Settings</string>
+    <string name="welcome">StatiXOS</string>
+    <string name="select_update">Select update</string>
+    <string name="pause_update">Pause update</string>
+    <string name="resume_update">Resume update</string>
+    <string name="cancel_update">Cancel update</string>
+    <string name="apply_update">Apply update</string>
+    <string name="no_update_available">No update available. Push an update to /sdcard/Android/data/com.statix.updater/files/</string>
+    <string name="check_for_update">Check for update</string>
+    <string name="reboot_device">Reboot device</string>
+    <string name="update_finalizing">Finalizing… %1$s%% complete</string>
+    <string name="cancel">Cancel</string>
+    <string name="ok">OK</string>
+    <string name="restart_title">Reboot device?</string>
+    <string name="reboot_message">Rebooting is needed to complete the update. Reboot now?</string>
+    <string name="verifying_update">Verifying update…</string>
+    <string name="update_complete">Update complete!</string>
+    <string name="installing_update">Installing… %1$s%% complete</string>
+    <string name="update_size">Update size: %1$sM</string>
+    <string name="current_version">Current version: %1$s</string>
+    <string name="to_install">Update zip to install: %1$s</string>
+    <string name="reboot_try_again">Update failed. Reboot to try again.</string>
+    <string name="history_title">Update history</string>
+    <string name="performance_mode">Performance Mode</string>
+    <string name="succeeded">Succeeded</string>
+    <string name="failed">Failed</string>
+    <string name="update_status">Update status: %1$s</string>
+</resources>
