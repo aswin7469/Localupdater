@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Pembaruan sistem</string>
+    <string name="action_settings">Setelan</string>
+    <string name="welcome">StatiXOS</string>
+    <string name="select_update">Pilih pembaruan</string>
+    <string name="pause_update">Jeda pembaruan</string>
+    <string name="resume_update">Lanjutkan pembaruan</string>
+    <string name="cancel_update">Batalkan pembaruan</string>
+    <string name="apply_update">Pasang pembaruan</string>
+    <string name="no_update_available">Tidak ada pembaruan yang tersedia. Dorong pembaruan ke /sdcard/Android/data/com.statix.updater/files/</string>
+    <string name="check_for_update">Cek untuk pembaruan</string>
+    <string name="reboot_device">Mulai ulang perangkat</string>
+    <string name="update_finalizing">Menyelesaikan…%1$s%% selesai</string>
+    <string name="cancel">Batal</string>
+    <string name="ok">Oke</string>
+    <string name="restart_title">Mulai ulang perangkat?</string>
+    <string name="reboot_message">Mulai ulang diperlukan untuk menyelesaikan pembaruan. Nyalakan ulang?</string>
+    <string name="verifying_update">Verifikasi pembaruan…</string>
+    <string name="update_complete">Pembaruan selesai!</string>
+    <string name="installing_update">Memasang…%1$s%% berhasil</string>
+    <string name="update_size">Ukuran pembaruan: %1$sM</string>
+    <string name="current_version">Versi terkini: %1$s</string>
+    <string name="to_install">Perbarui zip untuk menginstal: %1$s</string>
+    <string name="reboot_try_again">Pembaharuan gagal. Nyalakan ulang untuk mencoba lagi.</string>
+    <string name="history_title">Riwayat pembaruan</string>
+    <string name="performance_mode">Mode Performa</string>
+    <string name="succeeded">Berhasil</string>
+    <string name="failed">Gagal</string>
+    <string name="update_status">Memperbaharui status: %1$s</string>
+</resources>
