@@ -8,7 +8,7 @@
     <string name="resume_update">Continuar atualização</string>
     <string name="cancel_update">Cancelar atualização</string>
     <string name="apply_update">Aplicar atualização</string>
-    <string name="no_update_available">Nenhuma atualização disponível. Envie uma atualização para /sdcard/Android/data/com.statix.updater/files/</string>
+    <string name="no_update_available">Nenhuma atualização disponível. Envie uma atualização para /sdcard/Android/data/com.statix.localupdater/files/</string>
     <string name="check_for_update">Procurar atualização</string>
     <string name="reboot_device">Reiniciar dispositivo</string>
     <string name="update_finalizing">Finalizando… %1$s%% completo</string>

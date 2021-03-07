@@ -8,7 +8,7 @@
     <string name="resume_update">Reprendre la mise à jour</string>
     <string name="cancel_update">Annuler la mise à jour</string>
     <string name="apply_update">Appliquer la mise à jour</string>
-    <string name="no_update_available">Pas de mise à jour disponible. Déposez un fichier de mise à jour sur /sdcard/Android/data/com.statix.updater/files/</string>
+    <string name="no_update_available">Pas de mise à jour disponible. Déposez un fichier de mise à jour sur /sdcard/Android/data/com.statix.localupdater/files/</string>
     <string name="check_for_update">Contrôler la présence d\'une mise à jour</string>
     <string name="reboot_device">Redémarrer l\'appareil</string>
     <string name="update_finalizing">Finalisation complète à %1$s%%</string>

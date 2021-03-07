@@ -9,7 +9,7 @@
     <string name="cancel_update">Anuluj aktualizację</string>
     <string name="apply_update">Zastosuj aktualizację</string>
     <string name="no_update_available">Brak dostępnej aktualizacji. Prześlij aktualizację do
-/sdcard/Android/data/com.statix.updater/files/</string>
+/sdcard/Android/data/com.statix.localupdater/files/</string>
     <string name="check_for_update">Sprawdź aktualizacje</string>
     <string name="reboot_device">Uruchom ponownie urządzenie</string>
     <string name="update_finalizing">Kończenie… %1$s%% ukończono</string>

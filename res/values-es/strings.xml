@@ -8,7 +8,7 @@
     <string name="resume_update">Reanudar actualización</string>
     <string name="cancel_update">Cancelar actualización</string>
     <string name="apply_update">Actualizar ahora</string>
-    <string name="no_update_available">No hay actualizaciones disponibles. Introduce el paquete de actualización manual a la ruta /sdcard/Android/data/com.statix.updater/files/</string>
+    <string name="no_update_available">No hay actualizaciones disponibles. Introduce el paquete de actualización manual a la ruta /sdcard/Android/data/com.statix.localupdater/files/</string>
     <string name="check_for_update">Revisar por actualizaciones</string>
     <string name="reboot_device">Reiniciar el dispositivo</string>
     <string name="update_finalizing">Finalizando… %1$s%% completo</string>
