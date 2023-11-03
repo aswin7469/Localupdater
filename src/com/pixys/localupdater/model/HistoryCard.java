@@ -1,4 +1,4 @@
-package com.statix.localupdater.model;
+package com.pixys.localupdater.model;
 
 public class HistoryCard implements Comparable {
 

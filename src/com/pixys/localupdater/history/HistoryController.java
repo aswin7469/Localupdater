@@ -1,4 +1,4 @@
-package com.statix.localupdater.history;
+package com.pixys.localupdater.history;
 
 import android.content.Context;
 import android.content.res.Resources;
@@ -11,9 +11,9 @@ import android.widget.TextView;
 
 import androidx.core.content.res.ResourcesCompat;
 
-import com.statix.localupdater.R;
-import com.statix.localupdater.misc.Constants;
-import com.statix.localupdater.model.HistoryCard;
+import com.pixys.localupdater.R;
+import com.pixys.localupdater.misc.Constants;
+import com.pixys.localupdater.model.HistoryCard;
 
 import org.json.JSONException;
 

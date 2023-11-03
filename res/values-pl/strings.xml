@@ -2,14 +2,14 @@
 <resources>
     <string name="app_name">Aktualizator</string>
     <string name="action_settings">Ustawienia</string>
-    <string name="welcome">StatiXOS</string>
+    <string name="welcome">PixysOS</string>
     <string name="select_update">Wybierz aktualizację</string>
     <string name="pause_update">Wstrzymaj aktualizację</string>
     <string name="resume_update">Wznów aktualizację</string>
     <string name="cancel_update">Anuluj aktualizację</string>
     <string name="apply_update">Zastosuj aktualizację</string>
     <string name="no_update_available">Brak dostępnej aktualizacji. Prześlij aktualizację do
-/sdcard/Android/data/com.statix.localupdater/files/</string>
+/sdcard/Android/data/com.pixys.localupdater/files/</string>
     <string name="check_for_update">Sprawdź aktualizacje</string>
     <string name="reboot_device">Uruchom ponownie urządzenie</string>
     <string name="update_finalizing">Kończenie… %1$s%% ukończono</string>

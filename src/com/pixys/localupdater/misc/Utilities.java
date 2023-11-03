@@ -1,4 +1,4 @@
-package com.statix.localupdater.misc;
+package com.pixys.localupdater.misc;
 
 import android.content.Context;
 import android.os.SystemProperties;
@@ -6,7 +6,7 @@ import android.util.Log;
 
 import androidx.preference.PreferenceManager;
 
-import com.statix.localupdater.model.ABUpdate;
+import com.pixys.localupdater.model.ABUpdate;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -33,10 +33,10 @@ public class Utilities {
     public static boolean isUpdate(File update) {
         String updateName = update.getName();
         // current build properties
-        String currentBuild = SystemProperties.get(Constants.STATIX_VERSION_PROP);
+        String currentBuild = SystemProperties.get(Constants.PIXYS_VERSION_PROP);
         String buildPrefix = SystemProperties.get(Constants.DEVICE_PROP);
         double version = Double.parseDouble(currentBuild.substring(1, 4));
-        String variant = SystemProperties.get(Constants.STATIX_BUILD_TYPE_PROP);
+        String variant = SystemProperties.get(Constants.PIXYS_BUILD_TYPE_PROP);
         // upgrade build properties
         String[] split = updateName.split("-");
         String upgradePrefix = split[0];

@@ -2,13 +2,13 @@
 <resources>
     <string name="app_name">Actualizador</string>
     <string name="action_settings">Ajustes</string>
-    <string name="welcome">StatiXOS</string>
+    <string name="welcome">PixysOS</string>
     <string name="select_update">Seleccionar actualización</string>
     <string name="pause_update">Pausar actualización</string>
     <string name="resume_update">Reanudar actualización</string>
     <string name="cancel_update">Cancelar actualización</string>
     <string name="apply_update">Actualizar ahora</string>
-    <string name="no_update_available">No hay actualizaciones disponibles. Introduce el paquete de actualización manual a la ruta /sdcard/Android/data/com.statix.localupdater/files/</string>
+    <string name="no_update_available">No hay actualizaciones disponibles. Introduce el paquete de actualización manual a la ruta /sdcard/Android/data/com.pixys.localupdater/files/</string>
     <string name="check_for_update">Revisar por actualizaciones</string>
     <string name="reboot_device">Reiniciar el dispositivo</string>
     <string name="update_finalizing">Finalizando… %1$s%% completo</string>

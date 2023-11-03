@@ -1,9 +1,9 @@
-package com.statix.localupdater;
+package com.pixys.localupdater;
 
-import static com.statix.localupdater.misc.Constants.PREF_INSTALLED_AB;
-import static com.statix.localupdater.misc.Constants.PREF_INSTALLING_AB;
-import static com.statix.localupdater.misc.Constants.PREF_INSTALLING_SUSPENDED_AB;
-import static com.statix.localupdater.misc.Constants.ENABLE_AB_PERF_MODE;
+import static com.pixys.localupdater.misc.Constants.PREF_INSTALLED_AB;
+import static com.pixys.localupdater.misc.Constants.PREF_INSTALLING_AB;
+import static com.pixys.localupdater.misc.Constants.PREF_INSTALLING_SUSPENDED_AB;
+import static com.pixys.localupdater.misc.Constants.ENABLE_AB_PERF_MODE;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -23,11 +23,11 @@ import android.widget.ProgressBar;
 import android.widget.Switch;
 import android.widget.TextView;
 
-import com.statix.localupdater.history.HistoryUtils;
-import com.statix.localupdater.history.HistoryView;
-import com.statix.localupdater.misc.Constants;
-import com.statix.localupdater.misc.Utilities;
-import com.statix.localupdater.model.ABUpdate;
+import com.pixys.localupdater.history.HistoryUtils;
+import com.pixys.localupdater.history.HistoryView;
+import com.pixys.localupdater.misc.Constants;
+import com.pixys.localupdater.misc.Utilities;
+import com.pixys.localupdater.model.ABUpdate;
 
 import org.json.JSONException;
 
@@ -69,7 +69,7 @@ public class MainActivity extends AppCompatActivity implements MainViewControlle
         mCurrentVersionView = (TextView) findViewById(R.id.current_version_view);
         mUpdateProgressText = (TextView) findViewById(R.id.progressText);
         mUpdateSize = (TextView) findViewById(R.id.update_size);
-        mCurrentVersionView.setText(getString(R.string.current_version, SystemProperties.get(Constants.STATIX_VERSION_PROP)));
+        mCurrentVersionView.setText(getString(R.string.current_version, SystemProperties.get(Constants.PIXYS_VERSION_PROP)));
         mHistory.setOnClickListener(v -> {
             Log.d(TAG, "History imagebutton clicked");
             Intent histIntent = new Intent(getApplicationContext(), HistoryView.class);
@@ -79,7 +79,7 @@ public class MainActivity extends AppCompatActivity implements MainViewControlle
         // set up prefs
         mSharedPrefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
 
-        // check for updoots in /sdcard/statix_updates
+        // check for updoots in /sdcard/pixys_updates
         mUpdate = Utilities.checkForUpdates(getApplicationContext());
 
         mUpdateControl.setOnClickListener(v -> {

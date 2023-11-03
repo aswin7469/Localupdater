@@ -1,4 +1,4 @@
-package com.statix.localupdater.history;
+package com.pixys.localupdater.history;
 
 import android.app.Activity;
 import android.content.Context;
@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
-import com.statix.localupdater.R;
+import com.pixys.localupdater.R;
 
 public class HistoryView extends Activity {
 

@@ -1,4 +1,4 @@
-package com.statix.localupdater;
+package com.pixys.localupdater;
 
 import android.content.Context;
 import android.os.PowerManager;
@@ -8,9 +8,9 @@ import android.util.Log;
 
 import java.io.IOException;
 
-import com.statix.localupdater.misc.Constants;
-import com.statix.localupdater.misc.Utilities;
-import com.statix.localupdater.model.ABUpdate;
+import com.pixys.localupdater.misc.Constants;
+import com.pixys.localupdater.misc.Utilities;
+import com.pixys.localupdater.model.ABUpdate;
 
 class ABUpdateHandler {
 

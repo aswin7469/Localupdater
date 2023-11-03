@@ -2,13 +2,13 @@
 <resources>
     <string name="app_name">Обновление</string>
     <string name="action_settings">Настройки</string>
-    <string name="welcome">StatiXOS</string>
+    <string name="welcome">PixysOS</string>
     <string name="select_update">Выбрать обновление</string>
     <string name="pause_update">Приостановить обновление</string>
     <string name="resume_update">Возобновить обновление</string>
     <string name="cancel_update">Отменить обновление</string>
     <string name="apply_update">Применить обновление</string>
-    <string name="no_update_available">Нет доступных обновлений. Загрузите обновление в /sdcard/Android/data/com.statix.localupdater/files/</string>
+    <string name="no_update_available">Нет доступных обновлений. Загрузите обновление в /sdcard/Android/data/com.pixys.localupdater/files/</string>
     <string name="check_for_update">Проверить обновления</string>
     <string name="reboot_device">Перезагрузка устройства</string>
     <string name="update_finalizing">Завершение… %1$s%% полностью</string>

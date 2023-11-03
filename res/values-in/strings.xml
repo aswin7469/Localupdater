@@ -2,13 +2,13 @@
 <resources>
     <string name="app_name">Pembaruan sistem</string>
     <string name="action_settings">Setelan</string>
-    <string name="welcome">StatiXOS</string>
+    <string name="welcome">PixysOS</string>
     <string name="select_update">Pilih pembaruan</string>
     <string name="pause_update">Jeda pembaruan</string>
     <string name="resume_update">Lanjutkan pembaruan</string>
     <string name="cancel_update">Batalkan pembaruan</string>
     <string name="apply_update">Pasang pembaruan</string>
-    <string name="no_update_available">Tidak ada pembaruan yang tersedia. Dorong pembaruan ke /sdcard/Android/data/com.statix.localupdater/files/</string>
+    <string name="no_update_available">Tidak ada pembaruan yang tersedia. Dorong pembaruan ke /sdcard/Android/data/com.pixys.localupdater/files/</string>
     <string name="check_for_update">Cek untuk pembaruan</string>
     <string name="reboot_device">Mulai ulang perangkat</string>
     <string name="update_finalizing">Menyelesaikan…%1$s%% selesai</string>

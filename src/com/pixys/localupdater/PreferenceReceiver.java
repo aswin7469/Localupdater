@@ -1,10 +1,10 @@
-package com.statix.localupdater;
+package com.pixys.localupdater;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 
-import com.statix.localupdater.misc.Utilities;
+import com.pixys.localupdater.misc.Utilities;
 
 public class PreferenceReceiver extends BroadcastReceiver {
     @Override

@@ -1,4 +1,4 @@
-package com.statix.localupdater.model;
+package com.pixys.localupdater.model;
 
 import java.io.File;
 import java.io.Serializable;

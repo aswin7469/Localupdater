@@ -1,14 +1,14 @@
-package com.statix.localupdater.misc;
+package com.pixys.localupdater.misc;
 
 public class Constants {
 
     // Data constants
-    public static final String UPDATE_INTERNAL_DIR = "/data/statix_updates/";
+    public static final String UPDATE_INTERNAL_DIR = "/data/pixys_updates/";
 
     // Update constants
-    public static String DEVICE_PROP = "ro.statix.device";
-    public static String STATIX_VERSION_PROP = "ro.statix.version";
-    public static String STATIX_BUILD_TYPE_PROP = "ro.statix.buildtype";
+    public static String DEVICE_PROP = "ro.pixys.device";
+    public static String PIXYS_VERSION_PROP = "ro.modversion";
+    public static String PIXYS_BUILD_TYPE_PROP = "ro.pixys.releasetype";
 
     // Status constants
     public static final int UPDATE_FINALIZING = 0;
